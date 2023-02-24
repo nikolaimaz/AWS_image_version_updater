@@ -13,6 +13,6 @@ sudo dpkg -i google-chrome*.deb
 sudo apt install -y -f
 clear
 echo 
-echo "please download chromedriver for "
+echo "please download chromedriver from https://chromedriver.chromium.org/downloads, for "
  google-chrome --version
 echo 

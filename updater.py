@@ -44,7 +44,7 @@ create_pull.close
 
 button_xpath = '/html/body/div[2]/div/div[1]/div/div/div/main/div/div/div/div[3]/div/div[1]/ul/li[3]/button'
 image_name_xpath='/html/body/div[2]/div/div[1]/div/div/div/main/div/div/div/div[2]/div/div[2]/div/div/div[1]/div[1]/h1'
-version_xpath='/html/body/div[2]/div/div[1]/div/div/div/main/div/div/div/div[3]/div/div[2]/div[3]/div/div[2]/div[1]/table/tbody/tr[{que}]/td[1]'
+version_xpath='/html/body/div[2]/div/div[1]/div/div/div/main/div/div/div/div[3]/div/div[2]/div[3]/div/div[2]/div[1]/table/tbody/tr[1]/td[1]'
 ###########################################################################################################################
 
 for url in links:
@@ -57,8 +57,7 @@ for url in links:
     tag_number= 0
 
     for x in repeat:  #getting version
-        tag_number +=1
-        tag_version = driver.find_element(by=By.XPATH,value=version_xpath.format(que=tag_number)).text
+        tag_version = driver.find_element(by=By.XPATH,value=version_xpath).text
         new_version=image_name +":"+ tag_version
         old_version=r".*"
         read_pull = open ("pull.txt", 'a')

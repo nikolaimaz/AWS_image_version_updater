@@ -74,3 +74,24 @@ and  **place where you store script and docker-compose file**
 
 **Run script**
 `python3 updater.py`
+
+## In case of failure
+
+99% failure is caused due to changes  in xpath 
+
+So to fix this issue you have to Copy full XPATH 
+
+1)From image name
+
+2)From button
+
+3)From version or name in image tags
+
+![image](https://user-images.githubusercontent.com/69244449/226070187-c43153aa-cd49-4012-a854-dd4a114c9126.png)
+
+And replace old XPATH in this section
+
+![image](https://user-images.githubusercontent.com/69244449/226070362-34a5adf1-1c1c-4d48-b023-ee6d8db3c788.png)
+
+
+

@@ -28,7 +28,7 @@ else:
 
 #links for scraping
 links = [
-    #"links to the images
+
     ]
 
 driver = webdriver.Chrome(options=options)
@@ -39,20 +39,26 @@ linux_command.system("cat docker-compose.yml>docker-compose_new.txt")
 create_pull = open ("pull.txt", 'w')
 create_pull.close
 
+####################################### Full XPATH #########################################################################
+# CHANGE XPATH IN CASE OF FAILURE
+
+button_xpath = '/html/body/div[2]/div/div[1]/div/div/div/main/div/div/div/div[3]/div/div[1]/ul/li[3]/button'
+image_name_xpath='/html/body/div[2]/div/div[1]/div/div/div/main/div/div/div/div[2]/div/div[2]/div/div/div[1]/div[1]/h1'
+
+###########################################################################################################################
 
 for url in links:
     driver.get(url=url)
     time.sleep(3.5)
-    button = driver.find_element(by=By.XPATH, value='/html/body/div[2]/div/div[1]/div/div/div/main/div/div/div/div/div[3]/div/div[1]/ul/li[3]/button')
+    button = driver.find_element(by=By.XPATH, value=button_xpath)
     driver.execute_script("arguments[0].click();",button)
-    image_name = driver.find_element(by=By.XPATH, value='/html/body/div[2]/div/div[1]/div/div/div/main/div/div/div/div/div[2]/div/div[2]/div/div/div[1]/div[1]/h1').text
+    image_name = driver.find_element(by=By.XPATH, value=image_name_xpath).text
     repeat = range(0,1)
     tag_number= 0
 
-
     for x in repeat:  #getting version
         tag_number +=1
-        tag_version = driver.find_element(by=By.XPATH,value='/html/body/div[2]/div/div[1]/div/div/div/main/div/div/div/div/div[3]/div/div[2]/div[3]/div/div[2]/div[1]/table/tbody/tr[{que}]/td[1]'.format(que=tag_number)).text
+        tag_version = driver.find_element(by=By.XPATH,value='/html/body/div[2]/div/div[1]/div/div/div/main/div/div/div/div[3]/div/div[2]/div[3]/div/div[2]/div[1]/table/tbody/tr[{que}]/td[1]'.format(que=tag_number)).text
         new_version=image_name +":"+ tag_version
         old_version=r".*"
         read_pull = open ("pull.txt", 'a')
